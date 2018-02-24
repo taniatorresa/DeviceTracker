@@ -59,6 +59,12 @@
       <DependentUpon>FrmNetworkAdapter.cs</DependentUpon>
     </Compile>
     <Compile Include="NetworkAdapter\NetworkAdapter.cs" />
+    <Compile Include="NetworkAdapter\NetworkAdapterInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetworkAdapter\NetworkAdapterInfo.Designer.cs">
+      <DependentUpon>NetworkAdapterInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="NetworkAdapter\UCNetworkAdapter.cs">
       <SubType>UserControl</SubType>
     </Compile>

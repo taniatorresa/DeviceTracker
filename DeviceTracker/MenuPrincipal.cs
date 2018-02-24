@@ -27,15 +27,16 @@ namespace DeviceTracker
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
-        private void adaptadorDeRedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmNetworkAdapter frmAdaptadorRed = new FrmNetworkAdapter();
-            frmAdaptadorRed.ShowDialog();
-        }
+  
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-
+           
+            FrmNetworkAdapter frmNetworkAdapter = new FrmNetworkAdapter();
+            frmNetworkAdapter.TopLevel = false;
+            frmNetworkAdapter.Parent = Adaptador;
+            frmNetworkAdapter.Show();
+            frmNetworkAdapter.Dock = DockStyle.Fill;
         }
     }
 }

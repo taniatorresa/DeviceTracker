@@ -31,5 +31,10 @@ namespace DeviceTracker.NetworkAdapter
             Location = point;
             Parent = parent;
         }
+
+        private void UCNetworkAdapter_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

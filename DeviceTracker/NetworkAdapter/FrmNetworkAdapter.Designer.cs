@@ -31,6 +31,7 @@
             this.grpNetworkAdapters = new System.Windows.Forms.GroupBox();
             this.stsMessage = new System.Windows.Forms.StatusStrip();
             this.tsslbResult = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.stsMessage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,10 +39,11 @@
             // 
             this.grpNetworkAdapters.Location = new System.Drawing.Point(13, 22);
             this.grpNetworkAdapters.Name = "grpNetworkAdapters";
-            this.grpNetworkAdapters.Size = new System.Drawing.Size(624, 247);
+            this.grpNetworkAdapters.Size = new System.Drawing.Size(542, 247);
             this.grpNetworkAdapters.TabIndex = 0;
             this.grpNetworkAdapters.TabStop = false;
             this.grpNetworkAdapters.Text = "Adapatdores de Red";
+            this.grpNetworkAdapters.Enter += new System.EventHandler(this.grpNetworkAdapters_Enter);
             // 
             // stsMessage
             // 
@@ -49,7 +51,7 @@
             this.tsslbResult});
             this.stsMessage.Location = new System.Drawing.Point(0, 320);
             this.stsMessage.Name = "stsMessage";
-            this.stsMessage.Size = new System.Drawing.Size(649, 22);
+            this.stsMessage.Size = new System.Drawing.Size(958, 22);
             this.stsMessage.TabIndex = 1;
             this.stsMessage.Text = "statusStrip1";
             // 
@@ -59,15 +61,27 @@
             this.tsslbResult.Size = new System.Drawing.Size(0, 17);
             this.tsslbResult.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(582, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(364, 247);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Información ";
+            // 
             // FrmNetworkAdapter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 342);
+            this.ClientSize = new System.Drawing.Size(958, 342);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.stsMessage);
             this.Controls.Add(this.grpNetworkAdapters);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmNetworkAdapter";
-            this.Text = "NetworkAdapter";
+            this.Text = "FrmNetworkAdapter";
+            this.Load += new System.EventHandler(this.FrmNetworkAdapter_Load);
             this.stsMessage.ResumeLayout(false);
             this.stsMessage.PerformLayout();
             this.ResumeLayout(false);
@@ -80,5 +94,6 @@
         private System.Windows.Forms.GroupBox grpNetworkAdapters;
         private System.Windows.Forms.StatusStrip stsMessage;
         private System.Windows.Forms.ToolStripStatusLabel tsslbResult;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

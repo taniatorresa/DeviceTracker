@@ -79,7 +79,8 @@
             this.Controls.Add(this.lbProductName);
             this.Controls.Add(this.pctNetworkAdapter);
             this.Name = "UCNetworkAdapter";
-            this.Size = new System.Drawing.Size(551, 33);
+            this.Size = new System.Drawing.Size(490, 33);
+            this.Load += new System.EventHandler(this.UCNetworkAdapter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctNetworkAdapter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
