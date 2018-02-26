@@ -32,6 +32,7 @@
             this.lbProductName = new System.Windows.Forms.Label();
             this.lbConnectionStatus = new System.Windows.Forms.Label();
             this.btnEnableDisable = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pctNetworkAdapter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,16 +71,26 @@
             this.btnEnableDisable.Text = "button1";
             this.btnEnableDisable.UseVisualStyleBackColor = true;
             // 
+            // btnInfo
+            // 
+            this.btnInfo.Location = new System.Drawing.Point(495, 5);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(75, 23);
+            this.btnInfo.TabIndex = 4;
+            this.btnInfo.Text = "Información";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            // 
             // UCNetworkAdapter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.btnEnableDisable);
             this.Controls.Add(this.lbConnectionStatus);
             this.Controls.Add(this.lbProductName);
             this.Controls.Add(this.pctNetworkAdapter);
             this.Name = "UCNetworkAdapter";
-            this.Size = new System.Drawing.Size(490, 33);
+            this.Size = new System.Drawing.Size(573, 33);
             this.Load += new System.EventHandler(this.UCNetworkAdapter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctNetworkAdapter)).EndInit();
             this.ResumeLayout(false);
@@ -93,5 +104,6 @@
         private System.Windows.Forms.Label lbProductName;
         private System.Windows.Forms.Label lbConnectionStatus;
         private System.Windows.Forms.Button btnEnableDisable;
+        private System.Windows.Forms.Button btnInfo;
     }
 }

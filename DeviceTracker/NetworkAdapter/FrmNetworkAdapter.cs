@@ -6,7 +6,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Management;
 using System.Threading;
+using DeviceTracker.WMI;
 using System.Windows.Forms;
 using DeviceTracker.Properties;
 
@@ -21,6 +23,8 @@ namespace DeviceTracker.NetworkAdapter
 
       
         private NetworkAdapter _currentNetworkAdapter = null;
+        private NetworkAdapter _currentNetworkAdapterInfo = null;
+
         public FrmNetworkAdapter()
         {
             if (isAdministrator())
@@ -59,10 +63,12 @@ namespace DeviceTracker.NetworkAdapter
                 UCNetworkAdapter ucNetworkAdapter = new UCNetworkAdapter(
                     networkAdapter,
                     BtnEnableDisableNetworAdaptetClick,
+                    ShowInfoButton,
                     new Point(10, 30 * i),
                     grpNetworkAdapters);
             }
         }
+
         private void ShowProgressInfo()
         {
             tsslbResult.Text = string.Empty;
@@ -147,7 +153,7 @@ namespace DeviceTracker.NetworkAdapter
                 // If failed to construct _currentNetworkAdapter the result will be fail.
             }
 
-           
+           //Status Strip data 
             if (result > 0)
             {
                 ShowAllNetworkAdapters();
@@ -177,6 +183,27 @@ namespace DeviceTracker.NetworkAdapter
             }
         }
 
+
+        public void ShowInfoButton(object sender, EventArgs e)
+        {
+            Button InfoButton = (Button)sender;
+          
+
+            int deviceId = ((int[])InfoButton.Tag)[0];
+            try
+            {
+                _currentNetworkAdapterInfo = new NetworkAdapter(deviceId);
+
+               
+
+            }
+            catch (NullReferenceException)
+            {
+                // If failed to construct _currentNetworkAdapter the result will be fail.
+            }
+
+        }
+
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
 
@@ -192,9 +219,6 @@ namespace DeviceTracker.NetworkAdapter
 
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }

@@ -39,10 +39,10 @@
             // 
             this.tabControlMenu.Controls.Add(this.Adaptador);
             this.tabControlMenu.Controls.Add(this.tabPage2);
-            this.tabControlMenu.Location = new System.Drawing.Point(22, 12);
+            this.tabControlMenu.Location = new System.Drawing.Point(24, 12);
             this.tabControlMenu.Name = "tabControlMenu";
             this.tabControlMenu.SelectedIndex = 0;
-            this.tabControlMenu.Size = new System.Drawing.Size(949, 463);
+            this.tabControlMenu.Size = new System.Drawing.Size(984, 463);
             this.tabControlMenu.TabIndex = 0;
             // 
             // Adaptador
@@ -50,7 +50,7 @@
             this.Adaptador.Location = new System.Drawing.Point(4, 22);
             this.Adaptador.Name = "Adaptador";
             this.Adaptador.Padding = new System.Windows.Forms.Padding(3);
-            this.Adaptador.Size = new System.Drawing.Size(941, 437);
+            this.Adaptador.Size = new System.Drawing.Size(976, 437);
             this.Adaptador.TabIndex = 0;
             this.Adaptador.Text = "Adaptadores de Red";
             this.Adaptador.UseVisualStyleBackColor = true;
@@ -69,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 501);
+            this.ClientSize = new System.Drawing.Size(1033, 501);
             this.Controls.Add(this.tabControlMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuPrincipal";
