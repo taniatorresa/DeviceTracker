@@ -1,5 +1,6 @@
 ﻿using System;
 using DeviceTracker.NetworkAdapter;
+using DeviceTracker.Keyboard;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,6 +38,17 @@ namespace DeviceTracker
             frmNetworkAdapter.Parent = Adaptador;
             frmNetworkAdapter.Show();
             frmNetworkAdapter.Dock = DockStyle.Fill;
+
+            FrmKeyboard frmKeyboard = new FrmKeyboard();
+            frmKeyboard.TopLevel = false;
+            frmKeyboard.Parent = Teclados;
+            frmKeyboard.Show();
+            frmKeyboard.Dock = DockStyle.Fill;
+        }
+
+        private void Adaptador_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

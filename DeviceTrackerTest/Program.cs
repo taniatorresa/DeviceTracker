@@ -6,31 +6,38 @@ using System.Threading.Tasks;
 using System.Management;
 using System.Net.NetworkInformation;
 
+
 namespace DeviceTrackerTest
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-         
-                NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();
-                foreach (NetworkInterface adapter in adapters)
+            string strWQuery = "SELECT DeviceID, Name, Description, "
+                + "Status "
+                + "FROM Win32_Keyboard ";
+            ManagementObjectCollection keyboards = WMIOperation.WMIQuery(strWQuery);
+            foreach (ManagementObject moKeyboard in keyboards)
+            {
+                try
                 {
-                    IPInterfaceProperties properties = adapter.GetIPProperties();
-                    Console.WriteLine(adapter.Description);
-                    Console.WriteLine("  DNS suffix .............................. : {0}",
-                        properties.DnsSuffix);
-                    Console.WriteLine("  DNS enabled ............................. : {0}",
-                        properties.IsDnsEnabled);
-                    Console.WriteLine("  Dynamically configured DNS .............. : {0}",
-                        properties.IsDynamicDnsEnabled);
+                    Console.WriteLine("ID " + moKeyboard["DeviceId"].ToString());
+                    Console.WriteLine("nombre " + moKeyboard["Name"].ToString());
+                    Console.WriteLine("Descripcion " + moKeyboard["Description"].ToString());
+                    Console.WriteLine("Estatus" +moKeyboard["Status"].ToString());
                 }
-                Console.WriteLine();
-            
-            Console.WriteLine("Pulse una tecla para terminar ...");
-            Console.ReadKey();
+                catch (NullReferenceException)
+                {
+
+                }
+             
+
+
+                Console.WriteLine("Pulse una tecla para terminar ...");
+                Console.ReadKey();
+            }
         }
-     
+        
+
     }
 }
