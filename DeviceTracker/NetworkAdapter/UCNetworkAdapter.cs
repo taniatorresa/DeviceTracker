@@ -13,6 +13,7 @@ namespace DeviceTracker.NetworkAdapter
         }
         public UCNetworkAdapter(NetworkAdapter networkAdapter,
             EventHandler eventHandler,
+            EventHandler eventHandlerInfo,
             Point point,
             Control parent)
         {
@@ -27,9 +28,19 @@ namespace DeviceTracker.NetworkAdapter
                 ? Resources.BtnText_Disable : Resources.BtnText_Enable;
             btnEnableDisable.Tag =
                 new[] { networkAdapter.DeviceId, networkAdapter.NetEnabled };
+            btnInfo.Tag =
+            new[] { networkAdapter.DeviceId };
+            btnInfo.Click += eventHandlerInfo;
+
             btnEnableDisable.Click += eventHandler;
+            
             Location = point;
             Parent = parent;
+        }
+
+        private void UCNetworkAdapter_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

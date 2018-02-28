@@ -29,64 +29,63 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.adaptadorDeRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.tabControlMenu = new System.Windows.Forms.TabControl();
+            this.Adaptador = new System.Windows.Forms.TabPage();
+            this.Teclados = new System.Windows.Forms.TabPage();
+            this.tabControlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // tabControlMenu
             // 
-            this.groupBox1.Controls.Add(this.menuStrip1);
-            this.groupBox1.Location = new System.Drawing.Point(24, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(419, 330);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tipos de Dispositivos";
+            this.tabControlMenu.Controls.Add(this.Adaptador);
+            this.tabControlMenu.Controls.Add(this.Teclados);
+            this.tabControlMenu.Location = new System.Drawing.Point(24, 12);
+            this.tabControlMenu.Name = "tabControlMenu";
+            this.tabControlMenu.SelectedIndex = 0;
+            this.tabControlMenu.Size = new System.Drawing.Size(984, 463);
+            this.tabControlMenu.TabIndex = 0;
             // 
-            // menuStrip1
+            // Adaptador
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adaptadorDeRedToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 16);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(413, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.Adaptador.Location = new System.Drawing.Point(4, 22);
+            this.Adaptador.Name = "Adaptador";
+            this.Adaptador.Padding = new System.Windows.Forms.Padding(3);
+            this.Adaptador.Size = new System.Drawing.Size(976, 437);
+            this.Adaptador.TabIndex = 0;
+            this.Adaptador.Text = "Adaptadores de Red";
+            this.Adaptador.UseVisualStyleBackColor = true;
+            this.Adaptador.Click += new System.EventHandler(this.Adaptador_Click);
             // 
-            // adaptadorDeRedToolStripMenuItem
+            // Teclados
             // 
-            this.adaptadorDeRedToolStripMenuItem.Name = "adaptadorDeRedToolStripMenuItem";
-            this.adaptadorDeRedToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.adaptadorDeRedToolStripMenuItem.Text = "Adaptador de red";
-            this.adaptadorDeRedToolStripMenuItem.Click += new System.EventHandler(this.adaptadorDeRedToolStripMenuItem_Click);
+            this.Teclados.Location = new System.Drawing.Point(4, 22);
+            this.Teclados.Name = "Teclados";
+            this.Teclados.Padding = new System.Windows.Forms.Padding(3);
+            this.Teclados.Size = new System.Drawing.Size(976, 437);
+            this.Teclados.TabIndex = 1;
+            this.Teclados.Text = "Teclados";
+            this.Teclados.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 355);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1033, 501);
+            this.Controls.Add(this.tabControlMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MenuPrincipal";
             this.Text = "DeviceTracker";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.tabControlMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem adaptadorDeRedToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControlMenu;
+        private System.Windows.Forms.TabPage Adaptador;
+        private System.Windows.Forms.TabPage Teclados;
     }
 }
 

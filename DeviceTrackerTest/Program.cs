@@ -6,23 +6,38 @@ using System.Threading.Tasks;
 using System.Management;
 using System.Net.NetworkInformation;
 
+
 namespace DeviceTrackerTest
 {
     class Program
     {
         static void Main(string[] args)
         {
-            ConnectionOptions conOptions = new ConnectionOptions();
-            ManagementPath path = new  ManagementPath("\\\\.\\root\\cimv2");
-            ManagementScope mngscope = new ManagementScope(path, conOptions);
-      
+            string strWQuery = "SELECT DeviceID, Name, Description, "
+                + "Status "
+                + "FROM Win32_Keyboard ";
+            ManagementObjectCollection keyboards = WMIOperation.WMIQuery(strWQuery);
+            foreach (ManagementObject moKeyboard in keyboards)
+            {
+                try
+                {
+                    Console.WriteLine("ID " + moKeyboard["DeviceId"].ToString());
+                    Console.WriteLine("nombre " + moKeyboard["Name"].ToString());
+                    Console.WriteLine("Descripcion " + moKeyboard["Description"].ToString());
+                    Console.WriteLine("Estatus" +moKeyboard["Status"].ToString());
+                }
+                catch (NullReferenceException)
+                {
 
-            mngscope.Connect();
-            //Conexion al WMI services 
+                }
+             
 
-          
-            Console.WriteLine("Pulse una tecla para terminar ...");
-            Console.ReadKey();
+
+                Console.WriteLine("Pulse una tecla para terminar ...");
+                Console.ReadKey();
+            }
         }
+        
+
     }
 }

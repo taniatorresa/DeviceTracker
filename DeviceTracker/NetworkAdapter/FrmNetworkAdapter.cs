@@ -6,7 +6,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Management;
 using System.Threading;
+using DeviceTracker.WMI;
 using System.Windows.Forms;
 using DeviceTracker.Properties;
 
@@ -16,15 +18,13 @@ namespace DeviceTracker.NetworkAdapter
     {
         private List<NetworkAdapter> _allNetworkAdapters = new List<NetworkAdapter>();
 
-        /// <summary>
-        /// A ProgressInfo form
-        /// </summary>
+   
         private ProgressInfoForm _progressInfoForm = new ProgressInfoForm();
 
-        /// <summary>
-        /// The Current Operation Network Adapter
-        /// </summary>
+      
         private NetworkAdapter _currentNetworkAdapter = null;
+        private NetworkAdapter _currentNetworkAdapterInfo = null;
+
         public FrmNetworkAdapter()
         {
             if (isAdministrator())
@@ -63,10 +63,12 @@ namespace DeviceTracker.NetworkAdapter
                 UCNetworkAdapter ucNetworkAdapter = new UCNetworkAdapter(
                     networkAdapter,
                     BtnEnableDisableNetworAdaptetClick,
+                    ShowInfoButton,
                     new Point(10, 30 * i),
                     grpNetworkAdapters);
             }
         }
+
         private void ShowProgressInfo()
         {
             tsslbResult.Text = string.Empty;
@@ -95,8 +97,6 @@ namespace DeviceTracker.NetworkAdapter
         {
             Button btnEnableDisableNetworkAdapter = (Button)sender;
 
-            // The result of enable or disable Network Adapter
-            // result ={-1: Fail;0:Unknow;1:Success}
             int result = -1;
             int deviceId = ((int[])btnEnableDisableNetworkAdapter.Tag)[0];
 
@@ -106,20 +106,11 @@ namespace DeviceTracker.NetworkAdapter
             {
                 _currentNetworkAdapter = new NetworkAdapter(deviceId);
 
-                // To avoid the condition of the network adapter netenable change caused 
-                // by any other tool or operation (ex. Disconnected the Media) after you 
-                // start the sample and before you click the enable\disable button.
-                // In this case, the network adapter status shown in windows form is not
-                // meet the real status.
-
-                // If the network adapters' status is shown corrected,just to enable or 
-                // disable it as usual.
+                
                 if (((int[])btnEnableDisableNetworkAdapter.Tag)[1]
                     == _currentNetworkAdapter.NetEnabled)
                 {
-                    // If Network Adapter NetConnectionStatus in ("Hardware not present",
-                    // Hardware disabled","Hardware malfunction","Media disconnected"), 
-                    // it will can not be enabled.
+                    
                     if (_currentNetworkAdapter.NetEnabled == -1
                         && (_currentNetworkAdapter.NetConnectionStatus >= 4
                             && _currentNetworkAdapter.NetConnectionStatus <= 7))
@@ -150,8 +141,7 @@ namespace DeviceTracker.NetworkAdapter
                         showProgressInfoThreadProc.Abort();
                     }
                 }
-                // If the network adapter status are not shown corrected, just to refresh
-                // the form to show the correct network adapter status.
+                
                 else
                 {
                     ShowAllNetworkAdapters();
@@ -163,7 +153,7 @@ namespace DeviceTracker.NetworkAdapter
                 // If failed to construct _currentNetworkAdapter the result will be fail.
             }
 
-            // If successfully enable or disable the Network Adapter
+           //Status Strip data 
             if (result > 0)
             {
                 ShowAllNetworkAdapters();
@@ -193,9 +183,42 @@ namespace DeviceTracker.NetworkAdapter
             }
         }
 
+
+        public void ShowInfoButton(object sender, EventArgs e)
+        {
+            Button InfoButton = (Button)sender;
+          
+
+            int deviceId = ((int[])InfoButton.Tag)[0];
+            try
+            {
+                _currentNetworkAdapterInfo = new NetworkAdapter(deviceId);
+
+               
+
+            }
+            catch (NullReferenceException)
+            {
+                // If failed to construct _currentNetworkAdapter the result will be fail.
+            }
+
+        }
+
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void FrmNetworkAdapter_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpNetworkAdapters_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+     
     }
 }

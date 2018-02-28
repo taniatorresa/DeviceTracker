@@ -31,7 +31,6 @@ namespace DeviceTracker
 
         private void ProgressInfoForm_Load(object sender, EventArgs e)
         {
-
             Location = new Point(LocationX, LocationY);
         }
     }
